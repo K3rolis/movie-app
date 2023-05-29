@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie-app</title>
+    <script src="https://kit.fontawesome.com/d7e7917cb2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="header-wrapper">
+          <a href="./">
+            <div class="logo-wrapper">
+              <i class="fa-sharp fa-solid fa-video" style="color: #ff0000"></i>
+              <div class="logo">Movies</div>
+            </div>
+          </a>
+
+          <form action="./movie-list.html">
+            <div class="search-wrapper">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="search" name="search" id="search" placeholder="Search..." />
+            </div>
+          </form>
+          
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar short-bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <div class="container" page-content>
+        <nav class="sidebar" id="sidebar">
+          <div class="sidebar-list">
+            <span class="title">Genre</span>
+          </div>
+
+          <div class="sidebar-list">
+            <span class="title">Language</span>
+          </div>
+        </nav>
+        <div class="main-content" id="main-content">
+          <div class="banner-wrapper">
+            <div class="banner-content"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./assets/js/index.js" type="module"></script>
+  </body>
+</html>
