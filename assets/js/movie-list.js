@@ -1,6 +1,5 @@
 'use strict';
 
-import { api_key, imageBaseURL } from './api.js';
 import { API_KEY, IMG_BASE_URL } from './config.js';
 import { sidebar } from './sidebar.js';
 
@@ -15,7 +14,7 @@ sidebar();
 let totalPages = 0;
 
 async function fetchMovieListByLanguageOrGenre(currentPage) {
-  const api = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`;
+  const api = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage}&${urlParam}`;
 
   try {
     const response = await fetch(api);
@@ -197,7 +196,7 @@ async function loadEvent(searchValue, searchParam) {
 }
 
 async function fetchSearch(query, page) {
-  const api = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}=${query}&include_adult=false&language=en-US&page=${page}
+  const api = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}&include_adult=false&language=en-US&page=${page}
   `;
   try {
     const response = await fetch(api);
@@ -223,7 +222,7 @@ function list(movie) {
 
   const sliderItemImgEl = document.createElement('img');
 
-  sliderItemImgEl.setAttribute('src', `${imageBaseURL}w300${movie.poster_path}`);
+  sliderItemImgEl.setAttribute('src', `${IMG_BASE_URL}w300${movie.poster_path}`);
   sliderItemImgEl.setAttribute('alt', movie.title);
 
   sliderItemEl.appendChild(sliderItemImgEl);

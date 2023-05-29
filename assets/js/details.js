@@ -1,6 +1,5 @@
 'use strict';
 
-import { api_key, imageBaseURL } from './api.js';
 import { API_KEY, IMG_BASE_URL } from './config.js';
 import { sidebar } from './sidebar.js';
 import { createMovieCards, getMovieLink } from './movie-card.js';
@@ -74,7 +73,7 @@ async function createDetailElements() {
 
     const detailsBackgroundEl = document.createElement('img');
     detailsBackgroundEl.classList.add('movie-details-background');
-    detailsBackgroundEl.setAttribute('src', `${imageBaseURL}original${backdrop_path}`);
+    detailsBackgroundEl.setAttribute('src', `${IMG_BASE_URL}original${backdrop_path}`);
 
     detailsEl.appendChild(detailsWrapperEl);
 
@@ -85,7 +84,7 @@ async function createDetailElements() {
     sliderItemEl.classList.add('slider-item');
 
     const sliderImgEl = document.createElement('img');
-    sliderImgEl.setAttribute('src', `${imageBaseURL}w342${poster_path}`);
+    sliderImgEl.setAttribute('src', `${IMG_BASE_URL}w342${poster_path}`);
     sliderImgEl.setAttribute('alt', `${title} poster`);
 
     sliderItemEl.appendChild(sliderImgEl);
@@ -234,7 +233,7 @@ async function getRecommendationMovies() {
 }
 
 async function fetchMovieDetails() {
-  const api = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${api_key}&append_to_response=casts,videos,images,releases`;
+  const api = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&append_to_response=casts,videos,images,releases`;
   try {
     const response = await fetch(api);
     const movieDetails = await response.json();
@@ -326,7 +325,7 @@ async function fetchMovieDetails() {
 // });
 
 async function fetchRecommendationMovies() {
-  const api = `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api_key}`;
+  const api = `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${API_KEY}`;
 
   try {
     const response = await fetch(api);

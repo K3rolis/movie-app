@@ -1,14 +1,13 @@
 'use strict';
 
-import { api_key, fetchDataFromServer } from './api.js';
-import { API_KEY, IMG_BASE_URL } from './config.js';
+import { API_KEY } from './config.js';
 const sidebarEl = document.getElementById('sidebar');
 
 export function sidebar() {
   const genreList = {};
 
   async function fetchGenres() {
-    const api = `https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`;
+    const api = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
 
     try {
       const response = await fetch(api);

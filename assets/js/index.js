@@ -2,7 +2,6 @@
 
 import { sidebar } from './sidebar.js';
 import { API_KEY, IMG_BASE_URL } from './config.js';
-import { api_key, imageBaseURL } from './api.js';
 import { createMovieCards, getMovieLink } from './movie-card.js';
 
 // import { createMovieCard } from './movie-card.js';
@@ -14,7 +13,7 @@ const bannerEl = pageContent.querySelector('.banner-content');
 const heroSliderItems = pageContent.querySelector('#banner-cards-wrapper');
 
 async function fetchGenres() {
-  const api = `https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`;
+  const api = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
   try {
     const response = await fetch(api);
     const genres = await response.json();
@@ -26,9 +25,9 @@ async function fetchGenres() {
 
 async function fetchMovieLists() {
   const urls = [
-    `https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}&page=1`,
-    `https://api.themoviedb.org/3/trending/movie/week?api_key=${api_key}&page=1`,
-    `https://api.themoviedb.org/3/movie/top_rated?api_key=${api_key}&page=1`,
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&page=1`,
+    `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=1`,
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=1`,
   ];
 
   try {
@@ -103,7 +102,7 @@ async function getGenres() {
 }
 
 async function fetchMovies() {
-  const api = `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&page=1`;
+  const api = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=1`;
   try {
     const response = await fetch(api);
     const movies = await response.json();
@@ -178,7 +177,7 @@ function displayHeroContent(data, movieIndex) {
   const heroBannerEl = pageContent.querySelector('img');
 
   if (!data[movieIndex]) movieIndex = 0;
-  heroBannerEl.setAttribute('src', `${imageBaseURL}w1280${data[movieIndex].backdrop_path}`);
+  heroBannerEl.setAttribute('src', `${IMG_BASE_URL}w1280${data[movieIndex].backdrop_path}`);
   heroBannerEl.setAttribute('alt', `${data[movieIndex].title}`);
   // heroBannerEl.setAttribute('loading', `${index === movieIndex ? 'eager' : 'lazy'}`);
 
@@ -196,7 +195,7 @@ function displaySlider(data, index) {
   sliderItem.setAttribute('data-slider-item', `${index}`);
 
   const sliderItemImg = document.createElement('img');
-  sliderItemImg.setAttribute('src', `${imageBaseURL}w154${data.poster_path}`);
+  sliderItemImg.setAttribute('src', `${IMG_BASE_URL}w154${data.poster_path}`);
 
   sliderItem.appendChild(sliderItemImg);
   cardsWrapper.appendChild(sliderItem);

@@ -1,5 +1,4 @@
-import {imageBaseURL } from './api.js';
-import {IMG_BASE_URL } from './config.js';
+import { IMG_BASE_URL } from './config.js';
 
 export function createMovieCards(movie, appendElement) {
   if (!movie.poster_path) {
@@ -16,7 +15,7 @@ export function createMovieCards(movie, appendElement) {
 
   const sliderItemImgEl = document.createElement('img');
 
-  sliderItemImgEl.setAttribute('src', `${imageBaseURL}w300${movie.poster_path}`);
+  sliderItemImgEl.setAttribute('src', `${IMG_BASE_URL}w300${movie.poster_path}`);
   sliderItemImgEl.setAttribute('alt', movie.title);
 
   sliderItemEl.appendChild(sliderItemImgEl);
