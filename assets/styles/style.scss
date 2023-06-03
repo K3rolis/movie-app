@@ -377,6 +377,7 @@ main {
             .release-date {
               color: $secondary-text-color;
               margin-right: 20px;
+              vertical-align: middle;
             }
             .rating {
               display: inline-block;
@@ -384,7 +385,7 @@ main {
               background-color: $background-color-secondary;
               color: $primary-text-color;
               border-radius: $radius-md;
-              padding: 2px 4px;
+              padding: 5px 8px;
               font-weight: 700;
               font-size: 1.7rem;
               vertical-align: middle;

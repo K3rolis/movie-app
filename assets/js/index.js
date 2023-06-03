@@ -177,7 +177,7 @@ function displayHeroContent(data, movieIndex) {
 
   titleEl.textContent = data[movieIndex].title;
   releaseDateEl.textContent = data[movieIndex].release_date;
-  ratingEl.textContent = data[movieIndex].vote_average;
+  ratingEl.textContent = data[movieIndex].vote_average.toFixed(1);
   genreEl.textContent = genresList.convertToString(data[movieIndex].genre_ids);
   description.textContent = data[movieIndex].overview;
 }

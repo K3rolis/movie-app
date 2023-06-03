@@ -339,6 +339,7 @@ main .main-content .banner-wrapper .banner-content .banner-item .title {
 main .main-content .banner-wrapper .banner-content .banner-item .meta-data .release-date {
   color: rgb(124, 124, 124);
   margin-right: 20px;
+  vertical-align: middle;
 }
 main .main-content .banner-wrapper .banner-content .banner-item .meta-data .rating {
   display: inline-block;
@@ -346,7 +347,7 @@ main .main-content .banner-wrapper .banner-content .banner-item .meta-data .rati
   background-color: rgb(27, 27, 27);
   color: white;
   border-radius: 8px;
-  padding: 2px 4px;
+  padding: 5px 8px;
   font-weight: 700;
   font-size: 1.7rem;
   vertical-align: middle;
