@@ -245,89 +245,6 @@ async function fetchMovieDetails() {
   } catch (error) {}
 }
 
-// async function getMovieDetails() {
-//   fetchMovieDetails().then((movie) => {});
-// }
-
-// function list(movie) {
-//   const sliderItemsWrapperEl = document.getElementById('recommendation-movies');
-
-//   const movieBoxEl = document.createElement('a');
-//   movieBoxEl.classList.add('movie-box');
-//   movieBoxEl.setAttribute('data-link', `${movie.id}`);
-//   movieBoxEl.setAttribute('href', './movie-details.html');
-
-//   const sliderItemEl = document.createElement('div');
-//   sliderItemEl.classList.add('slider-item');
-
-//   const sliderItemImgEl = document.createElement('img');
-//   sliderItemImgEl.setAttribute('src', `${imageBaseURL}w300${movie.poster_path}`);
-//   sliderItemImgEl.setAttribute('alt', movie.title);
-
-//   sliderItemEl.appendChild(sliderItemImgEl);
-
-//   const movieContentEl = document.createElement('div');
-//   movieContentEl.classList.add('movie-content');
-
-//   const titleEl = document.createElement('div');
-//   titleEl.classList.add('title');
-//   titleEl.textContent = movie.title;
-
-//   const metaDataEl = document.createElement('div');
-//   metaDataEl.classList.add('meta-data');
-
-//   const ratingEl = document.createElement('span');
-//   ratingEl.classList.add('rating');
-//   ratingEl.textContent = movie.vote_average.toFixed(1);
-
-//   const starEl = document.createElement('i');
-//   starEl.classList.add('fa-solid', 'fa-star');
-
-//   const releasedDateEl = document.createElement('span');
-//   releasedDateEl.classList.add('released-date');
-//   releasedDateEl.textContent = movie.release_date.split('-')[0];
-
-//   ratingEl.appendChild(starEl);
-//   metaDataEl.append(ratingEl, releasedDateEl);
-//   movieContentEl.append(titleEl, metaDataEl);
-//   movieBoxEl.append(sliderItemEl, movieContentEl);
-//   sliderItemsWrapperEl.append(movieBoxEl);
-// }
-
-// searchEl.addEventListener('input', () => {
-//   let currentPage = 1;
-//   const loadBtn = document.getElementById('load-more');
-//   setTimeout(function () {
-//     fetchSearch(searchEl.value, currentPage).then(({ results, total_pages }) => {
-//       document.querySelectorAll('.movie-box').forEach((item) => {
-//         item.remove();
-//       });
-//       results.map((movie) => {
-//         list(movie);
-//       });
-
-//       let movieItems = document.querySelectorAll('.movie-box');
-//       getMovieDetails(movieItems);
-//       currentPage++;
-
-//       // const loadBtn = document.getElementById('load-more');
-
-//       // if (totalPages <= currentPage && loadBtn != null) {
-//       //   loadBtn.remove();
-//       // }
-//     });
-
-//     let movieItems = document.querySelectorAll('.movie-box');
-
-//     for (let item of movieItems) {
-//       item.addEventListener('click', () => {
-//         const movieId = item.getAttribute('data-link');
-//         localStorage.setItem('movieId', movieId);
-//       });
-//     }
-//   }, 500);
-// });
-
 async function fetchRecommendationMovies() {
   const api = `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${API_KEY}`;
 
@@ -337,8 +254,6 @@ async function fetchRecommendationMovies() {
     return recommendations;
   } catch (error) {}
 }
-
-// createDetailElements();
 
 async function init() {
   sidebar();

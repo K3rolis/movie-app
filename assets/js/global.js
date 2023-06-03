@@ -33,14 +33,6 @@ getSearchBtn.addEventListener('click', () => {
   searchEl.focus();
 });
 
-// window.addEventListener('resize', () => {
-//   if (header.offsetWidth >= 484) {
-//     searchWrapperEl.style.display = 'block';
-//   } else {
-//     searchWrapperEl.removeAttribute('style');
-//   }
-// });
-
 searchEl.addEventListener('focus', () => {
   const searchWrapperEl = document.querySelector('.search-wrapper');
 

@@ -1,10 +1,8 @@
 'use strict';
 
 import { sidebar } from './sidebar.js';
-import { API_KEY, IMG_BASE_URL, config } from './config.js';
+import { API_KEY, IMG_BASE_URL } from './config.js';
 import { createMovieCards, getMovieLink } from './movie-card.js';
-
-// import { createMovieCard } from './movie-card.js';
 
 init();
 
@@ -13,7 +11,7 @@ const pageContent = document.getElementById('main-content');
 const bannerEl = pageContent.querySelector('.banner-content');
 
 async function fetchGenres() {
-  const api = `https://api.themoviedb.org/3/genre/movie/list?api_key=${config.API_KEY}`;
+  const api = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
   try {
     const response = await fetch(api);
     const genres = await response.json();
@@ -23,9 +21,9 @@ async function fetchGenres() {
 
 async function fetchMovieLists() {
   const urls = [
-    `https://api.themoviedb.org/3/movie/upcoming?api_key=${config.API_KEY}&page=1`,
-    `https://api.themoviedb.org/3/trending/movie/week?api_key=${config.API_KEY}&page=1`,
-    `https://api.themoviedb.org/3/movie/top_rated?api_key=${config.API_KEY}&page=1`,
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&page=1`,
+    `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=1`,
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=1`,
   ];
 
   try {
@@ -96,7 +94,7 @@ async function getGenres() {
 }
 
 async function fetchMovies() {
-  const api = `https://api.themoviedb.org/3/movie/popular?api_key=${config.API_KEY}&page=1`;
+  const api = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=1`;
   try {
     const response = await fetch(api);
     const movies = await response.json();
@@ -176,7 +174,6 @@ function displayHeroContent(data, movieIndex) {
   heroBannerEl.setAttribute('alt', `${data[movieIndex].title}`);
 
   trailerButtonEl.setAttribute('data-link', `${data[movieIndex].id}`);
-  // heroBannerEl.setAttribute('loading', `${index === movieIndex ? 'eager' : 'lazy'}`);
 
   titleEl.textContent = data[movieIndex].title;
   releaseDateEl.textContent = data[movieIndex].release_date;

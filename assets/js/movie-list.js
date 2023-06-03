@@ -142,12 +142,6 @@ searchEl.addEventListener('input', () => {
       let movieItems = document.querySelectorAll('.movie-box');
       getMovieDetails(movieItems);
       currentPage++;
-
-      // const loadBtn = document.getElementById('load-more');
-
-      // if (totalPages <= currentPage && loadBtn != null) {
-      //   loadBtn.remove();
-      // }
     });
 
     let movieItems = document.querySelectorAll('.movie-box');
