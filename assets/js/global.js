@@ -24,7 +24,6 @@ hamburgerEl.addEventListener('click', () => {
 });
 
 const getMovieList = function (urlParam, name) {
-  console.log(urlParam, name);
   window.localStorage.setItem('urlParam', urlParam);
   window.localStorage.setItem('genreName', name);
 };
@@ -32,7 +31,6 @@ const getMovieList = function (urlParam, name) {
 getSearchBtn.addEventListener('click', () => {
   searchWrapperEl.style.display = 'block';
   searchEl.focus();
-  console.log(searchWrapperEl);
 });
 
 // window.addEventListener('resize', () => {
@@ -48,7 +46,6 @@ searchEl.addEventListener('focus', () => {
 
   searchBtn.style.display = 'none';
 
-  console.log(typeof searchWrapperEl.offsetWidth);
   if (searchWrapperEl.offsetWidth <= 234) {
     searchWrapperEl.classList.add('active');
   }

@@ -45,7 +45,6 @@ export function createMovieCards(movie, appendElement) {
   } else {
     releasedDateEl.textContent = movie.release_date.split('-')[0];
   }
-  //   console.log(movie);
 
   ratingEl.appendChild(starEl);
   metaDataEl.append(ratingEl, releasedDateEl);
