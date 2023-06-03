@@ -47,7 +47,7 @@ async function getMovieLists() {
 
   document.title = `${genreName} Movies`;
 
-  searchContentEl.textContent = `${genreName} genre`;
+  searchContentEl.textContent = `${genreName}`;
 
   let movieItems = document.querySelectorAll('.movie-box');
 

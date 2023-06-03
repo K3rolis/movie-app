@@ -19,14 +19,19 @@
             </div>
           </a>
 
-          <form action="./movie-list.html">
-            <div class="search-wrapper">
-              <i class="fa-solid fa-magnifying-glass"></i>
+          <div class="search-wrapper">
+            <form action="./movie-list.html">
+              <i class="fa-solid fa-magnifying-glass search-form-decoration"></i>
               <input type="search" name="search" id="search" placeholder="Search..." />
-            </div>
-          </form>
-          
-          <div class="hamburger">
+              <button type="submit"><i class="fa-solid fa-magnifying-glass search-form-submit"></i></button>
+            </form>
+          </div>
+
+          <div class="btn search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+
+          <div class="btn hamburger">
             <span class="bar"></span>
             <span class="bar short-bar"></span>
             <span class="bar"></span>
@@ -54,6 +59,7 @@
       </div>
     </main>
 
+    <script src="./assets/js/global.js"></script>
     <script src="./assets/js/index.js" type="module"></script>
   </body>
 </html>

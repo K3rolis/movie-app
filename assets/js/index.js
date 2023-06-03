@@ -1,33 +1,31 @@
 'use strict';
 
 import { sidebar } from './sidebar.js';
-import { API_KEY, IMG_BASE_URL } from './config.js';
+import { API_KEY, IMG_BASE_URL, config } from './config.js';
 import { createMovieCards, getMovieLink } from './movie-card.js';
 
 // import { createMovieCard } from './movie-card.js';
 
 init();
 
+document.getElementsByName;
 const pageContent = document.getElementById('main-content');
 const bannerEl = pageContent.querySelector('.banner-content');
-const heroSliderItems = pageContent.querySelector('#banner-cards-wrapper');
 
 async function fetchGenres() {
-  const api = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
+  const api = `https://api.themoviedb.org/3/genre/movie/list?api_key=${config.API_KEY}`;
   try {
     const response = await fetch(api);
     const genres = await response.json();
     return genres;
-  } catch (error) {
-    // console.log(error);
-  }
+  } catch (error) {}
 }
 
 async function fetchMovieLists() {
   const urls = [
-    `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&page=1`,
-    `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=1`,
-    `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=1`,
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${config.API_KEY}&page=1`,
+    `https://api.themoviedb.org/3/trending/movie/week?api_key=${config.API_KEY}&page=1`,
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=${config.API_KEY}&page=1`,
   ];
 
   try {
@@ -47,12 +45,8 @@ async function fetchMovieLists() {
         data: topRated,
       },
     ];
-  } catch (err) {
-    console.log('oops', err);
-  }
+  } catch (err) {}
 }
-
-console.log(fetchMovieLists());
 
 async function displayMovieLists() {
   const pageContent = document.getElementById('main-content');
@@ -102,7 +96,7 @@ async function getGenres() {
 }
 
 async function fetchMovies() {
-  const api = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=1`;
+  const api = `https://api.themoviedb.org/3/movie/popular?api_key=${config.API_KEY}&page=1`;
   try {
     const response = await fetch(api);
     const movies = await response.json();
@@ -142,10 +136,10 @@ async function createHeroBannerElements() {
 
   const trailerButtonEl = document.createElement('a');
   trailerButtonEl.classList.add('trailer-button');
-  trailerButtonEl.setAttribute('href', '#');
+  trailerButtonEl.setAttribute('href', './movie-details.html');
 
   const trailerTextEl = document.createElement('span');
-  trailerTextEl.textContent = 'Watch Trailer';
+  trailerTextEl.textContent = 'Watch Now';
 
   const trailerIconEl = document.createElement('i');
   trailerIconEl.classList.add('fa-solid', 'fa-play');
@@ -175,10 +169,13 @@ function displayHeroContent(data, movieIndex) {
   const genreEl = bannerEl.querySelector('.genre');
   const description = bannerEl.querySelector('.description');
   const heroBannerEl = pageContent.querySelector('img');
+  const trailerButtonEl = pageContent.querySelector('.trailer-button');
 
   if (!data[movieIndex]) movieIndex = 0;
   heroBannerEl.setAttribute('src', `${IMG_BASE_URL}w1280${data[movieIndex].backdrop_path}`);
   heroBannerEl.setAttribute('alt', `${data[movieIndex].title}`);
+
+  trailerButtonEl.setAttribute('data-link', `${data[movieIndex].id}`);
   // heroBannerEl.setAttribute('loading', `${index === movieIndex ? 'eager' : 'lazy'}`);
 
   titleEl.textContent = data[movieIndex].title;
@@ -233,21 +230,36 @@ async function displayMovieAndSlider() {
       });
     }
 
+    sliderItems.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      sliderItems.scrollLeft += e.deltaY;
+    });
+
     displayHeroContent(results, controlMovieIndex);
   });
 }
 
 async function init() {
   sidebar();
-  await createHeroBannerElements();
   getGenres();
-  displayMovieLists();
-  displayMovieAndSlider();
+  await createHeroBannerElements();
+  await displayMovieLists();
+  await displayMovieAndSlider();
+  scrollableLists();
 }
 
-// Event Listeners
-
-heroSliderItems.addEventListener('wheel', (e) => {
-  e.preventDefault();
-  heroSliderItems.scrollLeft += e.deltaY;
+const trailerBtn = document.querySelector('.trailer-button');
+trailerBtn.addEventListener('click', () => {
+  const movieId = trailerBtn.getAttribute('data-link');
+  localStorage.setItem('movieId', movieId);
 });
+
+function scrollableLists() {
+  const sliderItems = document.querySelectorAll('.slider-items-wrapper');
+  sliderItems.forEach((item) => {
+    item.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      item.scrollLeft += e.deltaY;
+    });
+  });
+}

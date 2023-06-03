@@ -192,6 +192,10 @@ async function createDetailElements() {
       trailerVideoEl.setAttribute('allowfullscreen', 1);
       trailerVideoEl.setAttribute('title', title);
 
+      if (filterVideos(videos).length > 1) {
+        trailerItemEl.style.width = '350px';
+      }
+
       trailerItemEl.appendChild(trailerVideoEl);
       trailerItemsWrapperEl.appendChild(trailerItemEl);
     }
@@ -341,4 +345,14 @@ async function init() {
   await createDetailElements();
   await getRecommendationMovies();
   getMovieLink();
+  scrollableSlider();
+}
+
+function scrollableSlider() {
+  const sliderItem = document.querySelector('.slider-items-wrapper');
+
+  sliderItem.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    sliderItem.scrollLeft += e.deltaY;
+  });
 }

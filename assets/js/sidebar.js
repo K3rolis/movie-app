@@ -21,6 +21,7 @@ export function sidebar() {
       genreList[id] = name;
     }
     genreLink();
+    languageLink();
   });
 
   function genreLink() {
@@ -28,11 +29,44 @@ export function sidebar() {
       const link = document.createElement('a');
       link.classList.add('sidebar-link');
       link.setAttribute('href', './movie-list.html');
-      link.setAttribute('menu-close', '');
       link.setAttribute('data-genre', genreName);
       link.setAttribute('onclick', `getMovieList("with_genres=${genreId}", "${genreName}")`);
       link.textContent = genreName;
       sidebarEl.querySelectorAll('.sidebar-list')[0].appendChild(link);
     }
+  }
+
+  function languageLink() {
+    let languages = [
+      {
+        id: 0,
+        language: 'en',
+        name: 'English',
+      },
+      {
+        id: 1,
+        language: 'de',
+        name: 'Germany',
+      },
+      {
+        id: 2,
+        language: 'fr',
+        name: 'France',
+      },
+      {
+        id: 3,
+        language: 'lv',
+        name: 'Latvia',
+      },
+    ];
+
+    languages.map((language) => {
+      const link = document.createElement('a');
+      link.classList.add('sidebar-link');
+      link.setAttribute('href', './movie-list.html');
+      link.setAttribute('onclick', `getMovieList("with_original_language=${language.language}", "${language.name}")`);
+      link.textContent = language.name;
+      sidebarEl.querySelectorAll('.sidebar-list')[1].appendChild(link);
+    });
   }
 }
